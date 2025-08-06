@@ -1,0 +1,39 @@
+{
+  "name": "otaku-haven-back",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "db:setup": "node db/seed.js",
+    "db:seed": "node --env-file=.env db/seed.js",
+    "db:reset": "npm run db:schema && npm run db:seed",
+    "test": "echo \"Error: no test specified\" && exit 1"
+    
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AndyD777/Otaku-Haven-back.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AndyD777/Otaku-Haven-back/issues"
+  },
+  "homepage": "https://github.com/AndyD777/Otaku-Haven-back#readme",
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.1",
+    "express": "^5.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "pg": "^8.16.3"
+  },
+  "devDependencies": {
+    "supertest": "^7.1.0",
+    "vitest": "^3.2.4"
+  }
+}
