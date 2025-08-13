@@ -1,4 +1,3 @@
--- Drop in order of dependencies
 DROP TABLE IF EXISTS cart;
 DROP TABLE IF EXISTS favorites;
 DROP TABLE IF EXISTS reviews;
@@ -6,7 +5,6 @@ DROP TABLE IF EXISTS orders;
 DROP TABLE IF EXISTS users;
 DROP TABLE IF EXISTS products;
 
--- Users table
 CREATE TABLE users (
   id SERIAL PRIMARY KEY,
   username TEXT UNIQUE NOT NULL,
@@ -15,7 +13,6 @@ CREATE TABLE users (
   is_admin BOOLEAN DEFAULT false
 );
 
--- Products table
 CREATE TABLE products (
   id SERIAL PRIMARY KEY,
   name TEXT NOT NULL,
@@ -24,7 +21,6 @@ CREATE TABLE products (
   image TEXT
 );
 
--- Orders table
 CREATE TABLE orders (
   id SERIAL PRIMARY KEY,
   user_id INTEGER REFERENCES users(id),
@@ -32,7 +28,6 @@ CREATE TABLE orders (
   status TEXT DEFAULT 'pending'
 );
 
--- Cart table (can represent cart items per user)
 CREATE TABLE cart (
   id SERIAL PRIMARY KEY,
   user_id INTEGER REFERENCES users(id),
@@ -41,7 +36,6 @@ CREATE TABLE cart (
   UNIQUE (user_id, product_id)
 );
 
--- Favorites table
 CREATE TABLE favorites (
   id SERIAL PRIMARY KEY,
   user_id INTEGER REFERENCES users(id),
@@ -49,7 +43,6 @@ CREATE TABLE favorites (
   UNIQUE (user_id, product_id)
 );
 
--- Reviews table
 CREATE TABLE reviews (
   id SERIAL PRIMARY KEY,
   user_id INTEGER REFERENCES users(id),

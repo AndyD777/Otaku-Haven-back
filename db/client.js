@@ -1,8 +1,16 @@
 import pkg from 'pg';
+import dotenv from 'dotenv';
+
+dotenv.config();
+
 const { Pool } = pkg;
 
-const db = new Pool({
-  connectionString: process.env.DATABASE_URL || 'postgres://localhost:5432/otaku_haven'
+const pool = new Pool({
+  connectionString: process.env.DATABASE_URL,
 });
 
-export default db;
+export default {
+  query: (text, params) => pool.query(text, params),
+  connect: () => pool.connect(),
+  end: () => pool.end(),
+};
